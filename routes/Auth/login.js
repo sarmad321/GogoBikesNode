@@ -36,15 +36,15 @@ router.get('/'  , async (req , res )=> {
 
     const token = req.header('Authorization').split("Bearer ")[1]
     if (!token) {
-       return res.status(400).send({userExist : false})
+       return res.status(200).send({userExist : false})
     }
 
     try {
         const decoded = jwt.verify(token , 'privateKey')
-        res.status(400).send({userExist : true})
+        res.status(200).send({userExist : true})
     }
     catch (ex) { 
-            res.status(400).send({userExist : false})
+            res.status(200).send({userExist : false})
 
     }
 
