@@ -4,8 +4,8 @@ const app = express();
 const register = require('./routes/Auth/register');
 const login = require("./routes/Auth/login");
 const errorHandler = require('./middleware/error')
-
-DB = 'mongodb+srv://GogoBikes:gogobikes@gogobikes.xqeyk.mongodb.net/GogoBikes?retryWrites=true&w=majority'
+const easyPaisa = require('./routes/Payment/easypaisa')
+ DB = 'mongodb+srv://GogoBikes:gogobikes@gogobikes.xqeyk.mongodb.net/GogoBikes?retryWrites=true&w=majority'
 
 mongoose.connect(DB)
 .then(()=>{
@@ -21,7 +21,7 @@ app.use(express.json());
 
 app.use('/api/user/register' , register);
 app.use('/api/user/login' , login)
-
+app.use('/api/easypaisa' , easyPaisa)
 app.use(errorHandler)
 const port = app.get('port')
 app.listen(port , ()=> console.log(`Listening to port number ${port}...`));
