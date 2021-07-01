@@ -34,7 +34,9 @@ if (alreadyExist) {
 
 router.get('/'  , auth, async (req , res )=> {
 
-   res.send("inside the function")
+   res.send({
+    userExist : true,
+   })
 
 }) 
 
