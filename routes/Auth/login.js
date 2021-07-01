@@ -32,21 +32,9 @@ if (alreadyExist) {
 })
 
 
-router.get('/'  , async (req , res )=> {
+router.get('/'  , auth, async (req , res )=> {
 
-    const token = req.header('Authorization').split("Bearer ")[1]
-    if (!token) {
-       return res.status(200).send({userExist : false})
-    }
-
-    try {
-        const decoded = jwt.verify(token , 'privateKey')
-        res.status(200).send({userExist : true})
-    }
-    catch (ex) { 
-            res.status(200).send({userExist : false})
-
-    }
+   res.send("inside the function")
 
 }) 
 

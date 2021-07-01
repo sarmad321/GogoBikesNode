@@ -5,6 +5,8 @@ const register = require('./routes/Auth/register');
 const login = require("./routes/Auth/login");
 const errorHandler = require('./middleware/error')
 const easyPaisa = require('./routes/Payment/easypaisa')
+const rides = require('./routes/rides/ride')
+
  DB = 'mongodb+srv://GogoBikes:gogobikes@gogobikes.xqeyk.mongodb.net/GogoBikes?retryWrites=true&w=majority'
 
 mongoose.connect(DB)
@@ -21,6 +23,7 @@ app.use(express.json());
 
 app.use('/api/user/register' , register);
 app.use('/api/user/login' , login)
+app.use('/api/rides' , rides )
 app.use('/api/easypaisa' , easyPaisa)
 app.use(errorHandler)
 const port = app.get('port')
