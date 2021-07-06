@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     userDetail : {
         type : Object ,
     },
+    refferalCode : String
 })
 
 

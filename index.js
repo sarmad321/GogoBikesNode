@@ -6,6 +6,8 @@ const login = require("./routes/Auth/login");
 const errorHandler = require('./middleware/error')
 const easyPaisa = require('./routes/Payment/easypaisa')
 const rides = require('./routes/rides/ride')
+const refferal = require('./routes/Refferal/refferal');
+const bikes = require('./routes/bikes/bikes')
 
  DB = 'mongodb+srv://GogoBikes:gogobikes@gogobikes.xqeyk.mongodb.net/GogoBikes?retryWrites=true&w=majority'
 
@@ -25,6 +27,8 @@ app.use('/api/user/register' , register);
 app.use('/api/user/login' , login)
 app.use('/api/rides' , rides )
 app.use('/api/easypaisa' , easyPaisa)
+app.use('/api/refferal' , refferal)
+app.use('/api/bikes' , bikes )
 app.use(errorHandler)
 const port = app.get('port')
 app.listen(port , ()=> console.log(`Listening to port number ${port}...`));

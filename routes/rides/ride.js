@@ -1,12 +1,7 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const router = express();
-const mongoose = require('mongoose');
-const Joi = require("joi");
 const {Ride} = require("../../models/ride");
-const bcrypt = require("bcrypt");
 const auth = require('../../middleware/auth')
-
 
 router.post('/start' , auth , async(req , res)=> {
      let date = new Date()
@@ -42,7 +37,6 @@ router.post('/end' , auth , async(req , res)=> {
           let result = await Ride.findOne({userDetail : req.user.id , status : "inProgress"})
           result.status = "completed"
           result.endTime = date
-          console.log(result)
           
           let save = await result.save()
           res.send({
